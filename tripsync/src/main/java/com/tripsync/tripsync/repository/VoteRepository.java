@@ -8,4 +8,6 @@ import java.util.List;
 public interface VoteRepository extends JpaRepository<Vote, Long> {
 
     List<Vote> findByPlanId(Long planId);
+
+    List<Vote> findByPlanIdAndVoteValue(Long planId, String voteValue);
 }
