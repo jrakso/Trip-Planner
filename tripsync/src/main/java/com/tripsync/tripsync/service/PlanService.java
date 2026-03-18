@@ -5,6 +5,8 @@ import com.tripsync.tripsync.repository.PlanRepository;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PlanService {
 
@@ -16,5 +18,9 @@ public class PlanService {
 
     public Plan createPlan(Plan plan) {
         return planRepository.save(plan);
+    }
+
+    public List<Plan> getPlansByTripdId(Long tripId) {
+        return planRepository.findByTripId(tripId);
     }
 }
