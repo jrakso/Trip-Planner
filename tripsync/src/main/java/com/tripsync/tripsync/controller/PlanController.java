@@ -6,10 +6,9 @@ import com.tripsync.tripsync.service.PlanService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("/plans")
+@RequestMapping("/trips/{tripId}/plans")
 public class PlanController {
 
     private final PlanService planService;
@@ -19,21 +18,23 @@ public class PlanController {
     }
 
     @PostMapping
-    public Plan createPlan(@RequestBody Plan plan) {
+    public Plan createPlan(@PathVariable Long tripId, @RequestBody Plan plan) {
+        plan.setTripId(tripId);
         return planService.createPlan(plan);
     }
 
-    @GetMapping("/trips/{tripId}")
+    @GetMapping
     public List<Plan> getPlansByTripId(@PathVariable Long tripId) {
         return planService.getPlansByTripId(tripId);
     }
 
-    @GetMapping("/trips/{tripId}/winning")
-    public Optional<Plan> getWinningPlan(@PathVariable Long tripId) {
-        return planService.getWinningPlan(tripId);
+    @GetMapping("/winning")
+    public Plan getWinningPlan(@PathVariable Long tripId) {
+        return planService.getWinningPlan(tripId)
+                .orElse(null);
     }
 
-    @GetMapping("/trips/{tripId}/summary")
+    @GetMapping("/summary")
     public List<PlanSummaryDTO> getPlanSummaries(@PathVariable Long tripId) {
         return planService.getPlanSummaries(tripId);
     }
