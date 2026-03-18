@@ -48,7 +48,7 @@ public class Vote {
         this.memberId = memberId;
     }
 
-    public void setValue(String voteValue) {
+    public void setVoteValue(String voteValue) {
         this.voteValue = voteValue;
     }
 }
