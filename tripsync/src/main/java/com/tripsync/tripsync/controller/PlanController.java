@@ -1,5 +1,6 @@
 package com.tripsync.tripsync.controller;
 
+import com.tripsync.tripsync.dto.PlanSummaryDTO;
 import com.tripsync.tripsync.model.Plan;
 import com.tripsync.tripsync.service.PlanService;
 import org.springframework.web.bind.annotation.*;
@@ -30,5 +31,10 @@ public class PlanController {
     @GetMapping("/trips/{tripId}/winning")
     public Optional<Plan> getWinningPlan(@PathVariable Long tripId) {
         return planService.getWinningPlan(tripId);
+    }
+
+    @GetMapping("/trips/{tripId}/summary")
+    public List<PlanSummaryDTO> getPlanSummaries(@PathVariable Long tripId) {
+        return planService.getPlanSummaries(tripId);
     }
 }
