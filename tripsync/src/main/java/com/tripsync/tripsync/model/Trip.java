@@ -36,6 +36,10 @@ public class Trip {
     this.groupId = groupId;
   }
 
+  public Long getId() {
+    return this.id;
+  }
+
   public String getTitle() {
     return this.title;
   }
