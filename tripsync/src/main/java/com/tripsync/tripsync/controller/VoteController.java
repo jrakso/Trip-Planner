@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/votes")
+@RequestMapping("/plans/{planId}/votes")
 public class VoteController {
 
     private final VoteService voteService;
@@ -17,11 +17,12 @@ public class VoteController {
     }
 
     @PostMapping
-    public Vote createVote(@RequestBody Vote vote) {
+    public Vote createVote(@PathVariable Long planId, @RequestBody Vote vote) {
+        vote.setPlanId(planId);
         return voteService.createVote(vote);
     }
 
-    @GetMapping("/plans/{planId}")
+    @GetMapping
     public List<Vote> getVotesByPlanId(@PathVariable Long planId) {
         return voteService.getVotesByPlanId(planId);
     }
