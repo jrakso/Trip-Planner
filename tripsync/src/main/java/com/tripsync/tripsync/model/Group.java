@@ -27,15 +27,15 @@ public class Group {
   }
 
   public Long getId() {
-    return id;
+    return this.id;
   }
 
   public String getName() {
-    return name;
+    return this.name;
   }
 
   public String getInviteCode() {
-    return inviteCode;
+    return this.inviteCode;
   }
 
   public void setName(String name) {
