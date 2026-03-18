@@ -20,7 +20,7 @@ public class PlanService {
         return planRepository.save(plan);
     }
 
-    public List<Plan> getPlansByTripdId(Long tripId) {
+    public List<Plan> getPlansByTripId(Long tripId) {
         return planRepository.findByTripId(tripId);
     }
 }

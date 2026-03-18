@@ -4,6 +4,8 @@ import com.tripsync.tripsync.model.Plan;
 import com.tripsync.tripsync.service.PlanService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/plans")
 public class PlanController {
@@ -17,5 +19,10 @@ public class PlanController {
     @PostMapping
     public Plan createPlan(@RequestBody Plan plan) {
         return planService.createPlan(plan);
+    }
+
+    @GetMapping("/trips/{tripId}")
+    public List<Plan> getPlansByTripId(@PathVariable Long tripId) {
+        return planService.getPlansByTripId(tripId);
     }
 }
