@@ -24,10 +24,8 @@ public class Trip {
   public Trip() {
   }
 
-  public Trip(String title,
-              String destination,
-              LocalDate startDate,
-              LocalDate endDate,
+  public Trip(String title, String destination,
+              LocalDate startDate, LocalDate endDate,
               Long groupId) {
     this.title = title;
     this.destination = destination;
