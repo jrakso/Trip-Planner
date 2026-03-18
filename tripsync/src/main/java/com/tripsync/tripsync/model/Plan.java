@@ -70,4 +70,32 @@ public class Plan {
     public Long getCreatedByMemberId() {
         return createdByMemberId;
     }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setTripId(Long tripId) {
+        this.tripId = tripId;
+    }
+
+    public void setCreatedByMemberId(Long createdByMemberId) {
+        this.createdByMemberId = createdByMemberId;
+    }
 }
