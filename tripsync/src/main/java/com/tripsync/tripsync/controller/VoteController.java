@@ -21,7 +21,7 @@ public class VoteController {
         return voteService.createVote(vote);
     }
 
-    @GetMapping("/plans/{planId}/votes")
+    @GetMapping("/plans/{planId}")
     public List<Vote> getVotesByPlanId(@PathVariable Long planId) {
         return voteService.getVotesByPlanId(planId);
     }
