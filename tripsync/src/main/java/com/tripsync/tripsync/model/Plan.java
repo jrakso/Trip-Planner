@@ -40,35 +40,35 @@ public class Plan {
     }
 
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public BigDecimal getPrice() {
-        return price;
+        return this.price;
     }
 
     public String getLink() {
-        return link;
+        return this.link;
     }
 
     public String getType() {
-        return type;
+        return this.type;
     }
 
     public Long getTripId() {
-        return tripId;
+        return this.tripId;
     }
 
     public Long getCreatedByMemberId() {
-        return createdByMemberId;
+        return this.createdByMemberId;
     }
 
     public void setTitle(String title) {

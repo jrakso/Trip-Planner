@@ -13,30 +13,42 @@ public class Vote {
 
     private Long memberId;
 
-    private String value;
+    private String voteValue;
 
     public Vote() {
     }
 
-    public Vote(Long planId, Long memberId, String value) {
+    public Vote(Long planId, Long memberId, String voteValue) {
         this.planId = planId;
         this.memberId = memberId;
-        this.value = value;
+        this.voteValue = voteValue;
     }
 
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public Long getPlanId() {
-        return planId;
+        return this.planId;
     }
 
     public Long getMemberId() {
-        return memberId;
+        return this.memberId;
     }
 
-    public String getValue() {
-        return value;
+    public String getVoteValue() {
+        return this.voteValue;
+    }
+
+    public void setPlanId(Long planId) {
+        this.planId = planId;
+    }
+
+    public void setMemberId(Long memberId) {
+        this.memberId = memberId;
+    }
+
+    public void setValue(String voteValue) {
+        this.voteValue = voteValue;
     }
 }
