@@ -5,6 +5,7 @@ import com.tripsync.tripsync.repository.VoteRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class VoteService {
@@ -15,8 +16,20 @@ public class VoteService {
         this.voteRepository = voteRepository;
     }
 
-    public Vote createVote(Vote vote) {
-        return voteRepository.save(vote);
+    public Vote createVote(Vote newVote) {
+        Optional<Vote> oldVote = voteRepository
+                .findByPlanIdAndMemberId(newVote.getPlanId(), newVote.getMemberId());
+
+        return oldVote.map(vote -> {
+
+            if (!vote.getVoteValue().equals(newVote.getVoteValue())) {
+                vote.setVoteValue(newVote.getVoteValue());
+                voteRepository.save(vote);
+            }
+
+            return vote;
+
+        }).orElseGet(() -> voteRepository.save(newVote));
     }
 
     public List<Vote> getVotesByPlanId(Long planId) {

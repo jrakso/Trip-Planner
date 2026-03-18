@@ -3,6 +3,9 @@ package com.tripsync.tripsync.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(
+    uniqueConstraints = @UniqueConstraint(columnNames = {"planId", "memberId"})
+)
 public class Vote {
 
     @Id
