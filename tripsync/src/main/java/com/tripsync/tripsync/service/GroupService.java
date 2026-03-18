@@ -10,30 +10,28 @@ import org.springframework.stereotype.Service;
 @Service
 public class GroupService {
 
-  private final GroupRepository groupRepository;
+    private final GroupRepository groupRepository;
+    private final MemberRepository memberRepository;
 
-  private final MemberRepository memberRepository;
+    public GroupService(GroupRepository groupRepository, MemberRepository memberRepository) {
+        this.groupRepository = groupRepository;
+        this.memberRepository = memberRepository;
+    }
 
-  public GroupService(GroupRepository groupRepository, MemberRepository memberRepository) {
-    this.groupRepository = groupRepository;
-    this.memberRepository = memberRepository;
-  }
+    public Group createGroup(String name) {
+        String inviteCode = "ABC123";  // Temporary
 
-  public Group createGroup(String name) {
-    String inviteCode = "ABC123";  // Temporary
+        Group group = new Group(name, inviteCode);
 
-    Group group = new Group(name, inviteCode);
+        return groupRepository.save(group);
+    }
 
-    return groupRepository.save(group);
-  }
+    public Member joinGroup(String inviteCode, String memberName) {
+        Group group = groupRepository.findByInviteCode(inviteCode)
+                .orElseThrow(() -> new RuntimeException("Group not found"));
 
-  public Member joinGroup(String inviteCode, String memberName) {
-    Group group = groupRepository.findByInviteCode(inviteCode)
-      .orElseThrow(() -> new RuntimeException("Group not found"));
+        Member member = new Member(memberName, group.getId());
 
-    Member member = new Member(memberName, group.getId());
-
-    return memberRepository.save(member);
-  }
-   
+        return memberRepository.save(member);
+    }
 }
