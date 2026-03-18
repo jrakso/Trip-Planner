@@ -4,6 +4,7 @@ import com.tripsync.tripsync.model.Group;
 import com.tripsync.tripsync.repository.GroupRepository;
 import com.tripsync.tripsync.repository.MemberRepository;
 import com.tripsync.tripsync.model.Member;
+
 import org.springframework.stereotype.Service;
 
 @Service
