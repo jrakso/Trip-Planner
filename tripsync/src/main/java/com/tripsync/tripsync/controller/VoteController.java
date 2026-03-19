@@ -1,5 +1,6 @@
 package com.tripsync.tripsync.controller;
 
+import com.tripsync.tripsync.dto.VoteRequestDTO;
 import com.tripsync.tripsync.model.Vote;
 import com.tripsync.tripsync.service.VoteService;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +18,12 @@ public class VoteController {
     }
 
     @PostMapping
-    public Vote createVote(@PathVariable Long planId, @RequestBody Vote vote) {
-        vote.setPlanId(planId);
+    public Vote createVote(@PathVariable Long planId, @RequestBody VoteRequestDTO request) {
+        Vote vote = new Vote(
+                planId,
+                request.getMemberId(),
+                request.getVoteValue()
+        );
         return voteService.createVote(vote);
     }
 
