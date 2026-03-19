@@ -19,8 +19,7 @@ public class Vote {
     @Enumerated(EnumType.STRING)
     private VoteValue voteValue;
 
-    public Vote() {
-    }
+    public Vote() {}
 
     public Vote(Long planId, Long memberId, VoteValue voteValue) {
         this.planId = planId;

@@ -14,8 +14,7 @@ public class Group {
 
     private String inviteCode;
 
-    public Group() {
-    }
+    public Group() {}
 
     public Group(String name, String inviteCode) {
         this.name = name;

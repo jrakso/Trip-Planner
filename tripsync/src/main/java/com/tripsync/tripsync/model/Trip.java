@@ -21,8 +21,7 @@ public class Trip {
 
     private Long groupId;
 
-    public Trip() {
-    }
+    public Trip() {}
 
     public Trip(String title, String destination,
                 LocalDate startDate, LocalDate endDate,

@@ -24,8 +24,7 @@ public class Plan {
 
     private Long createdByMemberId;
 
-    public Plan() {
-    }
+    public Plan() {}
 
     public Plan(String title, String description, BigDecimal price,
                 String link, String type,

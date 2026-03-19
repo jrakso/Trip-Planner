@@ -13,8 +13,7 @@ public class Member {
 
     private Long groupId;
 
-    public Member() {
-    }
+    public Member() {}
 
     public Member(String name, Long groupId) {
         this.name = name;

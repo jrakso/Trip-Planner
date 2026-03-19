@@ -15,18 +15,18 @@ public class PlanSummaryDTO {
     }
 
     public Long getPlanId() {
-        return planId;
+        return this.planId;
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     public int getYesVotes() {
-        return yesVotes;
+        return this.yesVotes;
     }
 
     public int getNoVotes() {
-        return noVotes;
+        return this.noVotes;
     }
 }
