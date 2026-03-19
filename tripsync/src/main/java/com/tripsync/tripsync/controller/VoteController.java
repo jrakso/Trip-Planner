@@ -1,6 +1,7 @@
 package com.tripsync.tripsync.controller;
 
 import com.tripsync.tripsync.dto.VoteRequestDTO;
+import com.tripsync.tripsync.dto.VoteResponseDTO;
 import com.tripsync.tripsync.model.Vote;
 import com.tripsync.tripsync.service.VoteService;
 import org.springframework.web.bind.annotation.*;
@@ -18,17 +19,32 @@ public class VoteController {
     }
 
     @PostMapping
-    public Vote createVote(@PathVariable Long planId, @RequestBody VoteRequestDTO request) {
+    public VoteResponseDTO createVote(@PathVariable Long planId, @RequestBody VoteRequestDTO request) {
         Vote vote = new Vote(
-                planId,
-                request.getMemberId(),
-                request.getVoteValue()
+            planId,
+            request.getMemberId(),
+            request.getVoteValue()
         );
-        return voteService.createVote(vote);
+
+        Vote saved = voteService.createVote(vote);
+
+        return new VoteResponseDTO(
+            saved.getId(),
+            saved.getPlanId(),
+            saved.getMemberId(),
+            saved.getVoteValue()
+        );
     }
 
     @GetMapping
-    public List<Vote> getVotesByPlanId(@PathVariable Long planId) {
-        return voteService.getVotesByPlanId(planId);
+    public List<VoteResponseDTO> getVotesByPlanId(@PathVariable Long planId) {
+        List<Vote> votes = voteService.getVotesByPlanId(planId);
+
+        return votes.stream().map(vote -> new VoteResponseDTO(
+            vote.getId(),
+            vote.getPlanId(),
+            vote.getMemberId(),
+            vote.getVoteValue()
+        )).toList();
     }
 }
