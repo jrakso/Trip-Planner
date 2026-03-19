@@ -1,5 +1,6 @@
 package com.tripsync.tripsync.controller;
 
+import com.tripsync.tripsync.dto.TripRequestDTO;
 import com.tripsync.tripsync.model.Trip;
 import com.tripsync.tripsync.service.TripService;
 
@@ -16,7 +17,14 @@ public class TripController {
     }
 
     @PostMapping
-    public Trip createTrip(@RequestBody Trip trip) {
+    public Trip createTrip(@RequestBody TripRequestDTO request) {
+        Trip trip = new Trip(
+            request.getTitle(),
+            request.getDestination(),
+            request.getStartDate(),
+            request.getEndDate(),
+            request.getGroupId()
+        );
         return tripService.createTrip(trip);
     }
 }

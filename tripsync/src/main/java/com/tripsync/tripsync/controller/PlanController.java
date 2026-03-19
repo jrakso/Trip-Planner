@@ -1,8 +1,10 @@
 package com.tripsync.tripsync.controller;
 
+import com.tripsync.tripsync.dto.PlanRequestDTO;
 import com.tripsync.tripsync.dto.PlanSummaryDTO;
 import com.tripsync.tripsync.model.Plan;
 import com.tripsync.tripsync.service.PlanService;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,8 +20,16 @@ public class PlanController {
     }
 
     @PostMapping
-    public Plan createPlan(@PathVariable Long tripId, @RequestBody Plan plan) {
-        plan.setTripId(tripId);
+    public Plan createPlan(@PathVariable Long tripId, @RequestBody PlanRequestDTO request) {
+        Plan plan = new Plan(
+            request.getTitle(),
+            request.getDescription(),
+            request.getPrice(),
+            request.getLink(),
+            request.getType(),
+            tripId,
+            request.getCreatedByMemberId()
+        );
         return planService.createPlan(plan);
     }
 

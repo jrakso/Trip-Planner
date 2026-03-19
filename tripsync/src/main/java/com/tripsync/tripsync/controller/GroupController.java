@@ -1,8 +1,10 @@
 package com.tripsync.tripsync.controller;
 
+import com.tripsync.tripsync.dto.GroupRequestDTO;
+import com.tripsync.tripsync.dto.JoinGroupRequestDTO;
 import com.tripsync.tripsync.model.Group;
-import com.tripsync.tripsync.service.GroupService;
 import com.tripsync.tripsync.model.Member;
+import com.tripsync.tripsync.service.GroupService;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -17,12 +19,12 @@ public class GroupController {
     }
 
     @PostMapping
-    public Group createGroup(@RequestBody Group request) {
+    public Group createGroup(@RequestBody GroupRequestDTO request) {
         return groupService.createGroup(request.getName());
     }
 
     @PostMapping("/{inviteCode}/join")
-    public Member joinGroup(@PathVariable String inviteCode, @RequestBody Member request) {
+    public Member joinGroup(@PathVariable String inviteCode, @RequestBody JoinGroupRequestDTO request) {
         return groupService.joinGroup(inviteCode, request.getName());
     }
 }
