@@ -24,7 +24,7 @@ public class VoteService {
 
             if (!vote.getVoteType().equals(newVote.getVoteType())) {
                 vote.setVoteType(newVote.getVoteType());
-                voteRepository.save(vote);
+                return voteRepository.save(vote);
             }
 
             return vote;

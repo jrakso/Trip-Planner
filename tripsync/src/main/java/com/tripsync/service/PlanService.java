@@ -1,6 +1,7 @@
 package com.tripsync.service;
 
 import com.tripsync.model.Plan;
+import com.tripsync.model.VoteType;
 import com.tripsync.repository.PlanRepository;
 import com.tripsync.repository.VoteRepository;
 import com.tripsync.dto.PlanSummaryDTO;
@@ -34,14 +35,14 @@ public class PlanService {
         List <Plan> plans = planRepository.findByTripId(tripId);
 
         Plan bestPlan = null;
-        int maxVotes = -1;
+        int maxVotes = 0;
 
         for (Plan plan : plans) {
             int yesVotes = voteRepository
-                    .findByPlanIdAndVoteType(plan.getId(), "YES")
+                    .findByPlanIdAndVoteType(plan.getId(), VoteType.YES)
                     .size();
 
-            if (yesVotes > maxVotes && yesVotes > 0) {
+            if (yesVotes > maxVotes) {
                 maxVotes = yesVotes;
                 bestPlan = plan;
             }
@@ -60,11 +61,11 @@ public class PlanService {
         
         for (Plan plan : plans) {
             int yesVotes = voteRepository
-                    .findByPlanIdAndVoteType(plan.getId(), "YES")
+                    .findByPlanIdAndVoteType(plan.getId(), VoteType.YES)
                     .size();
 
             int noVotes = voteRepository
-                    .findByPlanIdAndVoteType(plan.getId(), "NO")
+                    .findByPlanIdAndVoteType(plan.getId(), VoteType.NO)
                     .size();
 
             PlanSummaryDTO dto = new PlanSummaryDTO(
