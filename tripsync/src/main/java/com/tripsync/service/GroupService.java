@@ -4,6 +4,7 @@ import com.tripsync.model.Group;
 import com.tripsync.repository.GroupRepository;
 import com.tripsync.repository.MemberRepository;
 import com.tripsync.model.Member;
+import com.tripsync.exception.NotFoundException;
 
 import org.springframework.stereotype.Service;
 
@@ -28,7 +29,7 @@ public class GroupService {
 
     public Member joinGroup(String inviteCode, String memberName) {
         Group group = groupRepository.findByInviteCode(inviteCode)
-                .orElseThrow(() -> new RuntimeException("Group not found"));
+                .orElseThrow(() -> new NotFoundException("Group not found"));
 
         Member member = new Member(memberName, group.getId());
 

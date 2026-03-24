@@ -4,12 +4,12 @@ import com.tripsync.model.Plan;
 import com.tripsync.repository.PlanRepository;
 import com.tripsync.repository.VoteRepository;
 import com.tripsync.dto.PlanSummaryDTO;
+import com.tripsync.exception.NotFoundException;
 
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PlanService {
@@ -30,7 +30,7 @@ public class PlanService {
         return planRepository.findByTripId(tripId);
     }
 
-    public Optional<Plan> getWinningPlan(Long tripId) {
+    public Plan getWinningPlan(Long tripId) {
         List <Plan> plans = planRepository.findByTripId(tripId);
 
         Plan bestPlan = null;
@@ -47,7 +47,11 @@ public class PlanService {
             }
         }
 
-        return Optional.ofNullable(bestPlan);
+        if (bestPlan == null) {
+            throw new NotFoundException("No winning plan found");
+        }
+
+        return bestPlan;
     }
 
     public List<PlanSummaryDTO> getPlanSummaries(Long tripId) {
