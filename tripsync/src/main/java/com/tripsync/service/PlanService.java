@@ -41,7 +41,7 @@ public class PlanService {
                     .findByPlanIdAndVoteType(plan.getId(), "YES")
                     .size();
 
-            if (yesVotes > maxVotes && yesVotes != 0) {
+            if (yesVotes > maxVotes && yesVotes > 0) {
                 maxVotes = yesVotes;
                 bestPlan = plan;
             }

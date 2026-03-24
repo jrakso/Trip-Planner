@@ -40,8 +40,7 @@ public class PlanController {
 
     @GetMapping("/winning")
     public Plan getWinningPlan(@PathVariable Long tripId) {
-        return planService.getWinningPlan(tripId)
-                .orElse(null);
+        return planService.getWinningPlan(tripId);
     }
 
     @GetMapping("/summary")
