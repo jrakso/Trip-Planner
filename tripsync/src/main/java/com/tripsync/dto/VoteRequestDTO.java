@@ -18,7 +18,7 @@ public class VoteRequestDTO {
         return this.memberId;
     }
 
-    public VoteType gVoteType() {
+    public VoteType getVoteType() {
         return this.voteType;
     }
 
@@ -26,7 +26,7 @@ public class VoteRequestDTO {
         this.memberId = memberId;
     }
 
-    public void setVoteValue(VoteType voteType) {
+    public void setVoteType(VoteType voteType) {
         this.voteType = voteType;
     }
 }
