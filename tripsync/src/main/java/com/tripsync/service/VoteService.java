@@ -22,8 +22,8 @@ public class VoteService {
 
         return oldVote.map(vote -> {
 
-            if (!vote.getVoteValue().equals(newVote.getVoteValue())) {
-                vote.setVoteValue(newVote.getVoteValue());
+            if (!vote.getVoteType().equals(newVote.getVoteType())) {
+                vote.setVoteType(newVote.getVoteType());
                 voteRepository.save(vote);
             }
 

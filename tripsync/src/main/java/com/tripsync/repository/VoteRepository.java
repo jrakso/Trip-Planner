@@ -10,7 +10,7 @@ public interface VoteRepository extends JpaRepository<Vote, Long> {
 
     List<Vote> findByPlanId(Long planId);
 
-    List<Vote> findByPlanIdAndVoteValue(Long planId, String voteValue);
+    List<Vote> findByPlanIdAndVoteType(Long planId, String voteType);
 
     Optional<Vote> findByPlanIdAndMemberId(Long planId, Long memberId);
 }

@@ -1,17 +1,17 @@
 package com.tripsync.dto;
 
-import com.tripsync.model.VoteValue;
+import com.tripsync.model.VoteType;
 
 public class VoteResponseDTO {
 
     private Long id;
     private Long planId;
     private Long memberId;
-    private VoteValue voteValue;
+    private VoteType voteValue;
 
     public VoteResponseDTO() {}
 
-    public VoteResponseDTO(Long id, Long planId, Long memberId, VoteValue voteValue) {
+    public VoteResponseDTO(Long id, Long planId, Long memberId, VoteType voteValue) {
         this.id = id;
         this.planId = planId;
         this.memberId = memberId;
@@ -30,7 +30,7 @@ public class VoteResponseDTO {
         return this.memberId;
     }
 
-    public VoteValue getVoteValue() {
+    public VoteType getVoteValue() {
         return this.voteValue;
     }
 }

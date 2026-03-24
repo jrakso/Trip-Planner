@@ -38,7 +38,7 @@ public class PlanService {
 
         for (Plan plan : plans) {
             int yesVotes = voteRepository
-                    .findByPlanIdAndVoteValue(plan.getId(), "YES")
+                    .findByPlanIdAndVoteType(plan.getId(), "YES")
                     .size();
 
             if (yesVotes > maxVotes && yesVotes != 0) {
@@ -56,11 +56,11 @@ public class PlanService {
         
         for (Plan plan : plans) {
             int yesVotes = voteRepository
-                    .findByPlanIdAndVoteValue(plan.getId(), "YES")
+                    .findByPlanIdAndVoteType(plan.getId(), "YES")
                     .size();
 
             int noVotes = voteRepository
-                    .findByPlanIdAndVoteValue(plan.getId(), "NO")
+                    .findByPlanIdAndVoteType(plan.getId(), "NO")
                     .size();
 
             PlanSummaryDTO dto = new PlanSummaryDTO(

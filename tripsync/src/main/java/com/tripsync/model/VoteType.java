@@ -1,6 +1,6 @@
 package com.tripsync.model;
 
-public enum VoteValue {
+public enum VoteType {
     YES,
     NO
 }

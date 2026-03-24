@@ -1,32 +1,32 @@
 package com.tripsync.dto;
 
-import com.tripsync.model.VoteValue;
+import com.tripsync.model.VoteType;
 
 public class VoteRequestDTO {
 
     private Long memberId;
-    private VoteValue voteValue;
+    private VoteType voteType;
 
     public VoteRequestDTO() {}
 
-    public VoteRequestDTO(Long memberId, VoteValue voteValue) {
+    public VoteRequestDTO(Long memberId, VoteType voteType) {
         this.memberId = memberId;
-        this.voteValue = voteValue;
+        this.voteType = voteType;
     }
 
     public Long getMemberId() {
         return this.memberId;
     }
 
-    public VoteValue getVoteValue() {
-        return this.voteValue;
+    public VoteType gVoteType() {
+        return this.voteType;
     }
 
     public void setMemberId(Long memberId) {
         this.memberId = memberId;
     }
 
-    public void setVoteValue(VoteValue voteValue) {
-        this.voteValue = voteValue;
+    public void setVoteValue(VoteType voteType) {
+        this.voteType = voteType;
     }
 }

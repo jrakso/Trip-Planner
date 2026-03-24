@@ -17,14 +17,14 @@ public class Vote {
     private Long memberId;
 
     @Enumerated(EnumType.STRING)
-    private VoteValue voteValue;
+    private VoteType voteType;
 
     public Vote() {}
 
-    public Vote(Long planId, Long memberId, VoteValue voteValue) {
+    public Vote(Long planId, Long memberId, VoteType voteType) {
         this.planId = planId;
         this.memberId = memberId;
-        this.voteValue = voteValue;
+        this.voteType = voteType;
     }
 
     public Long getId() {
@@ -39,8 +39,8 @@ public class Vote {
         return this.memberId;
     }
 
-    public VoteValue getVoteValue() {
-        return this.voteValue;
+    public VoteType getVoteType() {
+        return this.voteType;
     }
 
     public void setPlanId(Long planId) {
@@ -51,7 +51,7 @@ public class Vote {
         this.memberId = memberId;
     }
 
-    public void setVoteValue(VoteValue voteValue) {
-        this.voteValue = voteValue;
+    public void setVoteType(VoteType voteType) {
+        this.voteType = voteType;
     }
 }

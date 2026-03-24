@@ -23,7 +23,7 @@ public class VoteController {
         Vote vote = new Vote(
             planId,
             request.getMemberId(),
-            request.getVoteValue()
+            request.getVoteType()
         );
 
         Vote saved = voteService.createVote(vote);
@@ -32,7 +32,7 @@ public class VoteController {
             saved.getId(),
             saved.getPlanId(),
             saved.getMemberId(),
-            saved.getVoteValue()
+            saved.getVoteType()
         );
     }
 
@@ -44,7 +44,7 @@ public class VoteController {
             vote.getId(),
             vote.getPlanId(),
             vote.getMemberId(),
-            vote.getVoteValue()
+            vote.getVoteType()
         )).toList();
     }
 }
